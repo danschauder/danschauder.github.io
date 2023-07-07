@@ -18,6 +18,8 @@ menu__settings:
       url: '/work/'
     - title: 'Contact'
       url: '/contact/'
+    - title: 'Resume'
+      url: '/resume/'
     # - title: 'Writing'
     #   url: '/blog/'
     # - title: 'Pages'
