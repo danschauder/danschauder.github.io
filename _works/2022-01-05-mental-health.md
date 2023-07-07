@@ -1,10 +1,10 @@
 ---
-title: Mental health
-description: An alternative to paperback is the glossy cover, otherwise known as a dust cover, found on magazines, and comic books.
+title: Global Database of Events Language and Tone
+description: Exploring and event-stream database.
 category: Print Design
 date: 2022-01-05 08:01:35 +0300
-role: Graphic Designer
-image: '/images/work-6.jpg'
+role: Data Scientist
+image: '/images/work-2.jpg'
 image_caption: 'Photo by [Freepik](https://www.freepik.com/)'
 ---
 
