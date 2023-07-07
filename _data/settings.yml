@@ -102,13 +102,13 @@ mailchimp:
 work:
   enable: true
   work__title: Work
-  work__description: I shows only the best websites and portfolios built completely with passion, simplicity & creativity!
+  work__description: Projects highlighting my passion for statistical modeling and machine learning.
 
 
 #-------------------------------
 # Testimonials Section
 testimonials:
-  enable: true
+  enable: false
 
 testimonial__title: Clients
 testimonial__description:
@@ -172,7 +172,7 @@ testimonial__items:
 #-------------------------------
 # Blog Section
 blog:
-  enable: true
+  enable: false
 
 blog__settings:
   blog__title: Writing
