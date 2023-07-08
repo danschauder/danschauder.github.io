@@ -2,10 +2,17 @@
 layout: page
 title: Contact
 permalink: /contact/
-image: '/images/16.jpg'
+image: '/images/network_graph_basic.png'
 ---
+## I'd love to hear from you! Use any of the below methods to reach me.
 
-<div class="form-box">
+Email: [danschauder@gmail.com](mailto:danschauder@gmail.com)
+
+Phone (US): (412)889-7914
+
+LinkedIn: [https://www.linkedin.com/in/daniel-schauder-21381126/](https://www.linkedin.com/in/daniel-schauder-21381126/)
+
+<!-- <div class="form-box">
   <div class="contact-head">
     {% if site.data.settings.contact.description %}
     <p class="contact-description">{{site.data.settings.contact.description}}</p>
@@ -28,4 +35,4 @@ image: '/images/16.jpg'
       <button class="button button--primary" type="submit">Send Message</button>
     </div>
   </form>
-</div>
+</div> -->
