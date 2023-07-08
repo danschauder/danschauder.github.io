@@ -6,22 +6,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Global Database of Events Language and Tone</title>
-  <meta name='description' content='Exploring and event-stream database.'>
+  <title>Using a Multinomial Naive Bayes Classifier to Predict US TV News Stations</title>
+  <meta name='description' content='Applying Natural Language Processing (NLP) techniques to discover insights about the news.'>
 
-  <link rel="canonical" href="http://localhost:4000/work/mental-health">
+  <link rel="canonical" href="http://localhost:4000/work/gdelt">
   <link rel="alternate" type="application/rss+xml" title="Dan Schauder" href="/feed.xml">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Global Database of Events Language and Tone – Dan Schauder">
-  <meta name="twitter:description" content="Exploring and event-stream database.">
-  <meta name="twitter:image:src" content="http://localhost:4000/images/work-2.jpg">
+  <meta name="twitter:title" content="Using a Multinomial Naive Bayes Classifier to Predict US TV News Stations – Dan Schauder">
+  <meta name="twitter:description" content="Applying Natural Language Processing (NLP) techniques to discover insights about the news.">
+  <meta name="twitter:image:src" content="http://localhost:4000/images/gdelt_banner.png">
 
   <!-- Facebook OpenGraph -->
-  <meta property="og:title" content="Global Database of Events Language and Tone – Dan Schauder">
-  <meta property="og:description" content="Exploring and event-stream database.">
-  <meta property="og:image" content="http://localhost:4000/images/work-2.jpg">
+  <meta property="og:title" content="Using a Multinomial Naive Bayes Classifier to Predict US TV News Stations – Dan Schauder">
+  <meta property="og:description" content="Applying Natural Language Processing (NLP) techniques to discover insights about the news.">
+  <meta property="og:image" content="http://localhost:4000/images/gdelt_banner.png">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -137,10 +137,10 @@
       <div class="col col-5 col-d-12">
         <div class="work-head__left">
           <div class="work-head__image">
-            <img class="lazy" data-src="/images/work-2.jpg" alt="Global Database of Events Language and Tone">
+            <img class="lazy" data-src="/images/gdelt_banner.png" alt="Using a Multinomial Naive Bayes Classifier to Predict US TV News Stations">
           </div>
           
-          <div class="page-image-caption">Photo by <a href="https://www.freepik.com/">Freepik</a>
+          <div class="page-image-caption">
 </div>
           
         </div>
@@ -152,17 +152,15 @@
           
           <div class="work-category">Print Design</div>
           
-          <h1 class="page-title">Global Database of Events Language and Tone</h1>
+          <h1 class="page-title">Using a Multinomial Naive Bayes Classifier to Predict US TV News Stations</h1>
           
-          <p class="page-description">Exploring and event-stream database.</p>
+          <p class="page-description">Applying Natural Language Processing (NLP) techniques to discover insights about the news.</p>
           
           <ul class="work-meta list-reset">
             
-            <li class="work-meta__item"><strong>Date:</strong> <span>05 Jan 2022</span></li>
+            <li class="work-meta__item"><strong>Date:</strong> <span>08 Jul 2023</span></li>
             
             
-            
-            <li class="work-meta__item"><strong>Role:</strong> <span>Data Scientist</span></li>
             
           </ul>
         </div>
@@ -175,27 +173,174 @@
 <div class="container animate">
 
   <div class="page">
-    <p>Hardcover books have a stiff binding. Paperback books have cheaper, flexible covers which tend to be less durable. An alternative to paperback is the glossy cover, otherwise known as a dust cover, found on magazines, and comic books. Spiral-bound books are bound by spirals made of metal or plastic. Examples of spiral-bound books include teachers’ manuals and puzzle books (crosswords, sudoku).</p>
+    <p>This is the first of a series of posts exploring the multi-terabyte publicly available Global Database of Events, Language, and Tone (known as GDELT). I originally completed a version of this analysis as the final project of a Machine Learning course in my Master’s program at Georgia Tech. The full project consisted of several Natural Language Processing (NLP) techniques including a Multinomial Naive Bayes classifier to predict US TV news stations, a station Similarity Index to compare and contrast news stations, Latent Semantic Analysis for Dimensionality Reduction, and Topic Discovery via Gaussian Mixture Model and Expectation Maximization. I broke the project down into smaller individual components for discussion on this site so readers can more easily explore the topics of greatest interest (and to make it a bit easier to organize my thoughts). In this post, I outline high-level goals for the project, give some background on GDELT, and discuss my choices for accessing and manipulating the data in Google Cloud Platform.</p>
 
-<div class="gallery-box">
-  <div class="gallery">
-    <img src="/images/work-2-2.jpg" loading="lazy" alt="Work" />
-    <img src="/images/work-2-3.jpg" loading="lazy" alt="Work" />
-  </div>
-  <em>Photo by <a href="https://www.freepik.com/" target="_blank">Freepik</a></em>
-</div>
+<hr />
 
-<p>There are several other types of books which are not commonly found under this system. Albums are books for holding a group of items belonging to a particular theme, such as a set of photographs, card collections, and memorabilia. One common example is stamp albums, which are used by many hobbyists to protect and organize their collections of postage stamps. Such albums are often made using removable plastic pages held inside in a ringed binder or other similar holder. Picture books are books for children with pictures on every page and less text (or even no text).</p>
+<h2 id="sections">Sections</h2>
+
+<ul>
+  <li><a href="#intro">Introduction</a></li>
+  <li><a href="#gdelt">Global Database of Events, Language, and Tone (GDELT)</a>
+    <ul>
+      <li><a href="#background">Background</a></li>
+      <li><a href="#ngrams">N-Gram Data</a></li>
+    </ul>
+  </li>
+  <li><a href="#gcp">Google Cloud Platform (GCP)</a>
+    <ul>
+      <li><a href="#bigquery">Google BigQuery</a></li>
+      <li><a href="#notebooks">Google AI Platform Notebooks</a></li>
+    </ul>
+  </li>
+  <li><a href="#conclusion">Conclusion</a></li>
+</ul>
+
+<hr />
+
+<p><a id="intro"></a></p>
+<h2 id="introduction">Introduction</h2>
+
+<p>I often feel that “unbiased news coverage” is a contradiction in terms, and according to the <a href="https://www.edelman.com/trust/2021-trust-barometer" target="_blank">2021 Edelman Trust Barometer</a>, I’m not alone in this feeling. According to this online survey of 31,050 global respondents, 59% agree with the statement that “most news organizations are more concerned with supporting an ideology or political position than with informing the public”.</p>
+
+<p>I wanted to use Natural Language Processing techniques to probe this intuition and explore questions like:</p>
+
+<ul>
+  <li>
+    <p>Can a model accurately classify a US TV news station based on transcripts of the station’s broadcasts (even if obviously identifying information were removed)? If a model can learn to detect characteristic vocabularies and phrasings on news stations, it may suggest the stations are not simply providing a straightforward presentation of the facts.</p>
+  </li>
+  <li>
+    <p>Based on their use of language, which TV news stations are most similar to one another? Which differ the most?</p>
+  </li>
+  <li>
+    <p>Can a model automatically discover the “top headlines” or key topics on news stations in a given week? If so, can the model estimate how heavily each station covered each topic?</p>
+  </li>
+</ul>
+
+<p>This post focuses on the main data source for my analysis, the Global Database of Events, Language, and Tone and my decisions around accessing and working with the data.</p>
+
+<hr />
+
+<p><a id="gdelt"></a></p>
+<h2 id="global-database-of-events-language-and-tone-gdelt">Global Database of Events, Language, and Tone (GDELT)</h2>
 
 <blockquote>
-  <p>The longer I live, the more I realize that I am never wrong about anything, and that all the pains I have so humbly taken to verify my notions have only wasted my time!</p>
+  <p>Supported by Google Jigsaw, the GDELT Project monitors the world’s broadcast, print, and web news from nearly every corner of every country in over 100 languages and identifies the people, locations, organizations, themes, sources, emotions, counts, quotes, images and events driving our global society every second of every day, creating a free open platform for computing on the entire world.</p>
+
+  <p><cite><a href="https://www.gdeltproject.org/" target="_blank">https://www.gdeltproject.org/</a></cite></p>
 </blockquote>
 
-<p>Publishers may produce low-cost, pre-publication copies known as galleys or ‘bound proofs’ for promotional purposes, such as generating reviews in advance of publication. Galleys are usually made as cheaply as possible, since they are not intended for sale.</p>
+<p><a id="background"></a></p>
+<h3 id="background">Background</h3>
 
-<p>Dummy books (or faux books) are books that are designed to imitate a real book by appearance to deceive people, some books may be whole with empty pages, others may be hollow or in other cases, there may be a whole panel carved with spines which are then painted to look like books,  titles of some books may also be fictitious.</p>
+<p>GDELT is a massive database consisting of multiple terabytes of data. GDELT encompasses several distinct datasets, and for this project I focused on the <a href="https://blog.gdeltproject.org/announcing-the-television-news-ngram-2-0-dataset/" target="_blank">Televison News Ngram 2.0 Dataset</a>. The dataset is generated through an automated process which monitors the <a href="https://archive.org/details/tv" target="_blank">Internet Archive’s Television News Archive</a> and parses the full-text “closed caption transcriptions from US TV News shows”.</p>
 
-<p>The advent of paperback books in the 20th century led to an explosion of popular publishing. Paperback books made owning books affordable for many people. Paperback books often included works from genres that had previously been published mostly in pulp magazines. As a result of the low cost of such books and the spread of bookstores filled with them (in addition to the creation of a smaller market of extremely cheap used paperbacks) owning a private library ceased to be a status symbol for the rich.</p>
+<p><a id="ngrams"></a></p>
+<h3 id="n-gram-data">N-Gram Data</h3>
+
+<p>A common approach to Natural Language Processing (NLP) involves splitting a body of text or “corpus” up into groupings of distinct ordered words or “tokens”. These groupings are called N-Grams. The “N” denotes the size of the grouping: groupings of size 1, 2, and 3 are referred to as “unigrams”, “bigrams”, and “trigrams” respectively. By counting the number of occurences or “frequency” of each N-Gram within a corpus, we can build probability distributions which may be useful in characterizing the corpus or making predictions about previously unseen text.</p>
+
+<p>GDELT parses TV transcriptions into unigrams, bigrams, trigrams, 4-grams, and 5-grams with associated frequencies at 10-minute intervals for the following TV News stations:</p>
+
+<ul>
+  <li>ABC</li>
+  <li>Al Jazeera</li>
+  <li>BBC News</li>
+  <li>Bloomberg</li>
+  <li>CBS</li>
+  <li>CNBC</li>
+  <li>CNN</li>
+  <li>CSPAN</li>
+  <li>CSPAN2</li>
+  <li>CSPAN3</li>
+  <li>Deutsche Welle</li>
+  <li>FOX</li>
+  <li>Fox Business</li>
+  <li>Fox News</li>
+  <li>LinkTV</li>
+  <li>MyNetworkTV</li>
+  <li>NBC</li>
+  <li>MSNBC</li>
+  <li>PBS</li>
+  <li>Russia Today</li>
+  <li>Telemundo</li>
+  <li>Univision</li>
+</ul>
+
+<p>A small example of the unigram data is shown here:</p>
+
+<p><img src="/images/gdelt/unigram_example.png" alt="GDELT" class="center-image" /></p>
+
+<p>Well over a terabyte of data is available, with N-Grams going back to 2009 for most of the available stations. Over a million records are generated each day across all stations.</p>
+
+<hr />
+
+<p><a id="gcp"></a></p>
+<h2 id="google-cloud-platform-gcp">Google Cloud Platform (GCP)</h2>
+
+<p>GDELT datasets are publicly available. Through a partnership with Google, the N-Gram data are published and hosted in an easily-accessible format in GCP.</p>
+
+<p><a id="bigquery"></a></p>
+<h3 id="google-bigquery">Google BigQuery</h3>
+
+<p>Since the N-Gram data were already being conveniently hosted in GCP, I chose to work with the data within the Google cloud environment.</p>
+
+<p><a href="https://cloud.google.com/bigquery" target="_blank">BigQuery</a> is Google’s “serverless, highly scalabe, and cost-effective multicloud data warehouse”. BigQuery’s Cloud Console UI makes it easy to explore visually and through basic SQL queries.</p>
+
+<p><img src="/images/gdelt/bigquery_schema.png" alt="Schema" class="center-image" />
+<em>Exploring the GDELT unigram schema in BigQuery Cloud Console</em></p>
+
+<p><img src="/images/gdelt/unigram_table_details.png" alt="Table Details" class="center-image" />
+<em>GDELT unigram table details</em></p>
+
+<p><img src="/images/gdelt/unigram_basic_query.png" alt="Basic Query" class="center-image" />
+<em>A simple query exploring some records in the GDELT unigram table</em></p>
+
+<p><a id="notebooks"></a></p>
+<h3 id="google-ai-platform-notebooks">Google AI Platform Notebooks</h3>
+
+<p>While BigQuery provides fast and easy access to the N-Gram data, I knew that further cleaning and transformation would be required before the data could be used to build models. Python is my favorite language for these tasks, so I wanted a Python environment with the following requirements:</p>
+
+<ul>
+  <li>Easily and cost-effectively access/extract data from Google BigQuery</li>
+  <li>Sufficient memory and compute resources to process and manipulate at least 1 week of N-Gram data</li>
+  <li>Key packages pre-loaded or easily installed (NumPy, pandas, matplotlib, and scikit-learn for starters)</li>
+</ul>
+
+<p>Nice-to-haves:</p>
+
+<ul>
+  <li>A REPL/notebook interface to weave code with figures, program outputs, and written text</li>
+  <li>Ability to scale storage and compute resources up or down as needed</li>
+</ul>
+
+<p>At first, I considered using <a href="https://research.google.com/colaboratory/">Google Colaboratory</a>, a free Google-hosted Jupyter Notebook environment. However, the free tier of Google Colab is resource-constrained, and I was concerned that these constraints may prevent me from quickly and easily experimenting with larger subsets of data if needed.</p>
+
+<p>In the end, I opted to use a <a href="https://cloud.google.com/notebooks">Google AI Platform Notebook</a> environment. Its tight integration with BigQuery, easily scalable configuration of CPU, RAM, and GPU resources, and out-of-the-box support for the most common machine learning packages met all of my requirements for the project and enabled me to get up and running in a few minutes.</p>
+
+<p>Here’s a walkthrough of the notebook setup process:</p>
+
+<p><img src="/images/gdelt/gcp_notebook_config1.png" alt="Notebook Landing Page" class="center-image" />
+<em>The AI Platform Notebook management UI</em></p>
+
+<p><img src="/images/gdelt/gcp_notebook_config2.png" alt="Notebook Setup" class="center-image" />
+<em>Creating a new notebook environment</em></p>
+
+<p><img src="/images/gdelt/gcp_notebook_cost_estimate.png" alt="Notebook Cost Estimate" class="center-image" />
+<em>A rough cost estimate for the notebook environment, assuming the notebook is left on and running all the time. If I’m mindful to shut off the notebook environment when not in use and delete the environment when the project is done, costs shouldn’t exceed $10 or so.</em></p>
+
+<p><img src="/images/gdelt/gcp_notebook_config3.png" alt="Notebook Setup" class="center-image" />
+<em>The new notebook environment, now available to access from the management UI</em></p>
+
+<p><img src="/images/gdelt/gcp_notebook_final.png" alt="Final Notebook" class="center-image" />
+<em>The final notebook, demonstrating the ability to import the necessary packages, query the unigram data from BigQuery, and display the results as a Pandas dataframe.</em></p>
+
+<hr />
+
+<p><a id="conclusion"></a></p>
+<h2 id="conclusion--next-steps">Conclusion &amp; Next Steps</h2>
+
+<p>In this post, I outlined the key questions I aimed to explore in the project, gave some background on the data source I used within GDELT to conduct the analysis, and discussed the environment I set up in GCP to access and manipulate the data. In the next post in this series, I’ll discuss the theory and implementation behind a Multinomial Naive Bayes Classifier, a station Similarity Index to compare and contrast news stations, Latent Semantic Analysis for Dimensionality Reduction, and Topic Discovery via Gaussian Mixture Model and Expectation Maximization to detect headlines.</p>
 
   </div>
 
