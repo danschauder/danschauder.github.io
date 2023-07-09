@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Resume
-description: I’m passionate about all things data, and I'm excited to highlight some projects in the world of data science, machine learning, and AI on this site.
+#description: I’m passionate about all things data, and I'm excited to highlight some projects in the world of data science, machine learning, and AI on this site.
 permalink: /resume/
 #image: '/images/Dan_Norway.jpg'
 #image_caption: ''
