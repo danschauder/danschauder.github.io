@@ -6,22 +6,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Project GOTECH - Predicting Coral Presence Using Satellite-Based LiDAR</title>
-  <meta name='description' content='A Georgia Tech practicum project in partnership with NASA and Coral Vita'>
+  <title>College Seeker - Visualizing College similarity and Predicting Student Debt</title>
+  <meta name='description' content='Using advanced analytics to improve college decisionmaking'>
 
-  <link rel="canonical" href="http://localhost:4000/work/gotech">
+  <link rel="canonical" href="http://localhost:4000/work/collegeseeker">
   <link rel="alternate" type="application/rss+xml" title="Dan Schauder" href="/feed.xml">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Project GOTECH - Predicting Coral Presence Using Satellite-Based LiDAR – Dan Schauder">
-  <meta name="twitter:description" content="A Georgia Tech practicum project in partnership with NASA and Coral Vita">
-  <meta name="twitter:image:src" content="http://localhost:4000/images/gotech/nasa-logo-web-rgb.png">
+  <meta name="twitter:title" content="College Seeker - Visualizing College similarity and Predicting Student Debt – Dan Schauder">
+  <meta name="twitter:description" content="Using advanced analytics to improve college decisionmaking">
+  <meta name="twitter:image:src" content="http://localhost:4000/images/collegeseeker/college_graph.png">
 
   <!-- Facebook OpenGraph -->
-  <meta property="og:title" content="Project GOTECH - Predicting Coral Presence Using Satellite-Based LiDAR – Dan Schauder">
-  <meta property="og:description" content="A Georgia Tech practicum project in partnership with NASA and Coral Vita">
-  <meta property="og:image" content="http://localhost:4000/images/gotech/nasa-logo-web-rgb.png">
+  <meta property="og:title" content="College Seeker - Visualizing College similarity and Predicting Student Debt – Dan Schauder">
+  <meta property="og:description" content="Using advanced analytics to improve college decisionmaking">
+  <meta property="og:image" content="http://localhost:4000/images/collegeseeker/college_graph.png">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -137,10 +137,10 @@
       <div class="col col-5 col-d-12">
         <div class="work-head__left">
           <div class="work-head__image">
-            <img class="lazy" data-src="/images/gotech/nasa-logo-web-rgb.png" alt="Project GOTECH - Predicting Coral Presence Using Satellite-Based LiDAR">
+            <img class="lazy" data-src="/images/collegeseeker/college_graph.png" alt="College Seeker - Visualizing College similarity and Predicting Student Debt">
           </div>
           
-          <div class="page-image-caption">Practicum project by Josh Mattingly, Tina Guo, and Dan Schauder
+          <div class="page-image-caption">Masters project by Austin Krauss, Sanjana Kumar, Stephen Mullaly, Dan Schauder, and Matt Schlosser
 </div>
           
         </div>
@@ -150,11 +150,11 @@
       <div class="col col-7 col-d-12">
         <div class="work-head__right">
           
-          <div class="work-category">GIS</div>
+          <div class="work-category">Data Visualization</div>
           
-          <h1 class="page-title">Project GOTECH - Predicting Coral Presence Using Satellite-Based LiDAR</h1>
+          <h1 class="page-title">College Seeker - Visualizing College similarity and Predicting Student Debt</h1>
           
-          <p class="page-description">A Georgia Tech practicum project in partnership with NASA and Coral Vita</p>
+          <p class="page-description">Using advanced analytics to improve college decisionmaking</p>
           
           <ul class="work-meta list-reset">
             
@@ -173,101 +173,18 @@
 <div class="container animate">
 
   <div class="page">
-    <div class="gallery-box">
-  <div class="gallery">
-    <img src="/images/gotech/nasa-logo-web-rgb.png" loading="lazy" />
-    <img src="/images/gotech/CV_Logo_Primary_White.svg" loading="lazy" />
-    <img src="/images/gotech/GeorgiaTech_RGB.png" loading="lazy" />
-  </div>
-</div>
+    <h1 id="introduction-and-motivation">Introduction and Motivation</h1>
 
-<h2 id="background">Background</h2>
-<h4 id="problem-statement">Problem Statement</h4>
 <ul>
-  <li>
-    <p>While approximately 30% of the world’s marine species depend on coral reefs, “all the coral reefs in the world could be gone by 2070 if global heating continues on its current path” (Morrison et al, 2019).</p>
+  <li>College choice is a critical life decision, yet no existing website allows students to easily discover and compare US universities while evaluating the potential debt burden they may incur from attending those universities.</li>
+  <li>Our web app, <a href="https://collegeseeker.net/">collegeseeker.net</a>, seeks to fill this need and has four principal components:
+    <ul>
+      <li>A graph showcasing the similarity of a college to other, potentially unknown colleges based on different filter options.</li>
+      <li>Detailed statistics displayed in real time as an easily readable paragraph with a link to the college’s website.</li>
+      <li>Information about feasibility of student loan repayment created using a linear regression model.</li>
+      <li>The most popular majors seen as a word cloud.</li>
+    </ul>
   </li>
-  <li>
-    <p>Comprehensive and accurate coral vitality data are needed for effective preservation and restoration of coral reefs, but existing datasets are fragmented, limited in scope, and rely on costly collection methods.</p>
-  </li>
-</ul>
-
-<h4 id="project-aims">Project Aims</h4>
-<p>The Geophysical Observations Toolkit for Evaluating Coral Health (GOTECH) project was a semester-long Practicum project sponsored by NASA and Coral Vita and undertaken by Master’s students at Georgia Tech in the Fall of 2021 wih the following goals:</p>
-
-<ul>
-  <li>Establish a baseline dataset of coral health by fusing disparate open-source datasets.</li>
-  <li>Merge baseline coral health data with data from a Lidar Sensor aboard nasa’s cloud-aerosol Lidar and infrared pathfinder satellite Observation (CALIPSO) satellite.</li>
-  <li>Correlate Lidar Backscatter with Coral Presence.</li>
-  <li>Interpret Trends in a Known Global Region based on Backscatter Alone.</li>
-</ul>
-
-<p>After researching multiple potential research locations, we chose the Florida coast as our primary focus. 
-<img src="/images/gotech/Reef_Locations.png" alt="Potential Reef Locations" width="900" /></p>
-
-<h2 id="methods">Methods</h2>
-
-<h4 id="data-fusion">Data Fusion</h4>
-<p>A nearest neighbor approach was used to pair response variables (coral/algae for Allen Coral Atlas and coral-only for AIMS survey) with either the CALIPSO or NEO predictor datasets.</p>
-
-<p>A 0.5 degree threshold was established to limit matching of CALIPSO backscatter to the response sets.</p>
-
-<p><img src="/images/gotech/Data_Fusion.png" alt="Data Fusion Methodology" width="900" /></p>
-
-<p>A model competition framework was created, allowing fusion methodologies to be tested against a standardized set of classification models.</p>
-
-<p><img src="/images/gotech/Dataset_Summary.png" alt="Data Fusion Methodology" width="900" /></p>
-
-<h2 id="model-results">Model Results</h2>
-<p>Model performance was based on the underlying dataset. Accuracy scores shown below.
-<img src="/images/gotech/accuracies.png" alt="Model Accuracy Grid" width="600" /></p>
-
-<p><img src="/images/gotech/accuracy_map.png" alt="Example model accuracy map" width="800" /></p>
-
-<h6 id="visualization-of-the-un-tuned-ann-on-the-florida-calipso--allen-coral-atlas-dataset-green-indicates-correct-predictions-with-red-being-incorrect">Visualization of the un-tuned ANN on the Florida (CALIPSO + Allen Coral Atlas) dataset. Green indicates correct predictions, with red being incorrect.</h6>
-
-<h2 id="conclusions">Conclusions</h2>
-<ul>
-  <li>Satellite-based LiDAR is a promising avenue for remote detection of coastal coral</li>
-  <li>Most influential datapoints for prediction taken from atmospheric readings well above ocean surface</li>
-  <li>Groundtruth data at higher spatiotemporal resolutions may be required to further improve predictive model performance</li>
-</ul>
-
-<h2 id="future-work-and-further-reading">Future Work and Further Reading</h2>
-<ul>
-  <li>Tune models for improved performance</li>
-  <li>Fuse additional data sources (NEO, GALILEO, etc)</li>
-  <li>Find sources where CALIPSO/LiDAR improves accuracy</li>
-  <li>Optimize distance threshold and backscatter feature selection</li>
-  <li>Update Distance and shape to match CALIPSO scan pattern</li>
-  <li>Manta Tow Survey time series regression (predict amount of live coral)</li>
-  <li>Re-run experiment with other forms of lidar (plane/ship/drone-mounted) and other research locations</li>
-  <li>A detailed report of this work was published in 2022 and is available for <a href="https://ntrs.nasa.gov/citations/20220010955">download from this NASA website</a></li>
-</ul>
-
-<h2 id="references">References</h2>
-<h4 id="data-sources">Data Sources</h4>
-<p>CALIPSO data was obtained from the NASA Langley Research Center Atmospheric Science Data Center from  <a href="https://subset.larc.nasa.gov/calipso/" target="_blank">https://subset.larc.nasa.gov/calipso/</a>.</p>
-
-<p>Australian Institute of Marine Science (AIMS). (2015). AIMS Long-term Monitoring Program: Crown-of-thorns starfish and benthos Manta Tow Data (Great Barrier Reef), <a href="https://doi.org/10.25845/5c09b0abf315a" target="_blank">https://doi.org/10.25845/5c09b0abf315a</a>, accessed 10-Nov-2021.</p>
-
-<p>Chlorophyll Concentration: 8-DAY AQUA/MODIS. (2018-2020). Retrieved Oct 25, 2021, from <a href="https://neo.gsfc.nasa.gov/view.php?datasetId=MY1DMW_CHLORA" target="_blank">https://neo.gsfc.nasa.gov/view.php?datasetId=MY1DMW_CHLORA</a></p>
-
-<p>Allen Coral Atlas maps, bathymetry and map statistics are © 2018-2021 Allen Coral Atlas Partnership and Vulcan, Inc. and licensed CC BY 4.0 (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">https://creativecommons.org/licenses/by/4.0/</a>)</p>
-
-<p>NASA Framework for the Ethical Use of Artificial Intelligence (AI). <a href="https://ntrs.nasa.gov/api/citations/20210012886/downloads/NASA-TM-20210012886.pdf" target="_blank">https://ntrs.nasa.gov/api/citations/20210012886/downloads/NASA-TM-20210012886.pdf</a></p>
-
-<h2 id="acknowledgements">Acknowledgements</h2>
-<p>This research was supported in part through research cyberinfrastructure resources and services provided by the Partnership for an Advanced Computing Environment (PACE) at the Georgia Institute of Technology, Atlanta, Georgia, USA.</p>
-
-<p>Our deep thanks to the following individuals for their mentorship and gracious support of this effort:</p>
-<ul>
-  <li>Dr. Newton Campbell (NASA)</li>
-  <li>Doug Trent (NASA)</li>
-  <li>Dr. Katey Lesneski (Coral Vita)</li>
-  <li>Joe Oliver (Coral Vita)</li>
-  <li>Dr. Joel Sokol (Georgia Tech)</li>
-  <li>Renata Haque (Georgia Tech)</li>
 </ul>
 
   </div>
@@ -284,36 +201,19 @@
 
         <div class="row">
           
-          <article class="work col col-6 col-d-12">
-            <div class="work__content">
-              <a href="/work/collegeseeker" class="work__image">
-                <img class="lazy" data-src="/images/collegeseeker/college_graph.png" alt="College Seeker - Visualizing College similarity and Predicting Student Debt">
-              </a>
-              <div class="work__info">
-                
-                <div class="work__category">Data Visualization</div>
-                
-                <h3 class="work__title"><a href="/work/collegeseeker">College Seeker - Visualizing College similarity and Predicting Student Debt</a></h3>
-                
-                <p class="work__description">Using advanced analytics to improve college decisionmaking</p>
-                
-              </div>
-            </div>
-          </article>
-          
           
           <article class="work col col-6 col-d-12">
             <div class="work__content">
-              <a href="/work/wordlebot" class="work__image">
-                <img class="lazy" data-src="/images/wordlebot/scrabble_tiles.jpg" alt="WordleBot - Using Spectral Clustering and Reinforcement Learning to Win at Wordle">
+              <a href="/work/gotech" class="work__image">
+                <img class="lazy" data-src="/images/gotech/nasa-logo-web-rgb.png" alt="Project GOTECH - Predicting Coral Presence Using Satellite-Based LiDAR">
               </a>
               <div class="work__info">
                 
-                <div class="work__category">Reinforcement Learning</div>
+                <div class="work__category">GIS</div>
                 
-                <h3 class="work__title"><a href="/work/wordlebot">WordleBot - Using Spectral Clustering and Reinforcement Learning to Win at Wordle</a></h3>
+                <h3 class="work__title"><a href="/work/gotech">Project GOTECH - Predicting Coral Presence Using Satellite-Based LiDAR</a></h3>
                 
-                <p class="work__description"><a href="https://towardsdatascience.com/wordlebot-386395472639" target="_">Published on Towards Data Science</a>.</p>
+                <p class="work__description">A Georgia Tech practicum project in partnership with NASA and Coral Vita</p>
                 
               </div>
             </div>
