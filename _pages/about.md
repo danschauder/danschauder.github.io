@@ -7,7 +7,11 @@ image: '/images/Dan_Norway.jpg'
 image_caption: ''
 ---
 
-With more than 9 years of experience as a data professional and a Masters in Computational Data Analytics from Georgia Tech, I've held a variety of individual contributor and management roles in several sectors including Finance, Advertising, and Insurance. I currently work as a Data Scientist at Liberty Mutual Insurance, supporting a portfolio of dozens of machine learning models to improve customer experiences and drive customer retention. I love diving headfirst into messy datasets and experimenting with the latest ML and AI techniques to find new ways to drive value. Aside from data science, I'm a lifelong musician, I love to hike, and I've recently taken up pickleball.
+With more than 7 years of experience as a data professional and a Masters in Computational Data Analytics from Georgia Tech, I've held a variety of individual contributor and management roles in several sectors including Finance, Advertising, and Insurance.
+
+I currently work as a Data Scientist at Liberty Mutual Insurance, supporting a portfolio of dozens of machine learning models to improve customer experiences and drive customer retention. I love diving headfirst into messy datasets and experimenting with the latest ML and AI techniques to find new ways to drive value.
+
+Aside from data science, I'm a lifelong musician (guitar, piano, cello), I love to hike, and I've recently taken up pickleball.
 
 <div class="gallery-box">
   <div class="gallery">

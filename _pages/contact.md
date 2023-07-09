@@ -2,11 +2,13 @@
 layout: page
 title: Contact
 permalink: /contact/
-image: '/images/network_graph_basic.png'
+#image: '/images/network_graph_basic.png'
 ---
 ## I'd love to hear from you! Use any of the below methods to reach me.
 
 Email: [danschauder@gmail.com](mailto:danschauder@gmail.com)
+
+<ion-icon name="heart"></ion-icon>
 
 Phone (US): (412)889-7914
 
