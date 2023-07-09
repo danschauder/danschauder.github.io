@@ -182,9 +182,34 @@
       <li>A graph showcasing the similarity of a college to other, potentially unknown colleges based on different filter options.</li>
       <li>Detailed statistics displayed in real time as an easily readable paragraph with a link to the college’s website.</li>
       <li>Information about feasibility of student loan repayment created using a linear regression model.</li>
-      <li>The most popular majors seen as a word cloud.</li>
+      <li>The most popular majors at each university displayed as a word cloud.</li>
     </ul>
   </li>
+</ul>
+
+<p><img src="/images/collegeseeker/college_seeker_example.png" alt="Example College Seeker Session" />
+<em>Sample instance of College Seeker, currently highlighting University of Michigan at Ann Arbor</em></p>
+
+<h1 id="data">Data</h1>
+
+<ul>
+  <li>1,735 college logos using Clearbit API</li>
+  <li>US Department of Education’s College Scorecard database
+    <ul>
+      <li>Contains details on college locations, programs of study, enrollment, tuition, student demographics, loan repayment rates, and more</li>
+      <li>168 MB CSV file consisting of 2,384 columns and 6,806 rows</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="analytical-approaches">Analytical Approaches</h1>
+
+<h2 id="discovery-graph">Discovery Graph</h2>
+
+<ul>
+  <li>Our team built a similarity network in which each college is a node. Any 2 colleges are connected by an edge with a weight given by the “similarity score” of the college pair.</li>
+  <li>The similarity scores are created by mapping each university into a vector space using variables like geographic location, size, degrees offered, and average SAT score. Then, we calculated the similarity scores as the pairwise distances between university vectors. After experimenting with several distance metrics, we settled on using the Minkowski distance with a p-norm of 2.</li>
+  <li></li>
 </ul>
 
   </div>
