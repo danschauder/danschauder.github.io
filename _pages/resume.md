@@ -3,17 +3,20 @@ layout: page
 title: Resume
 description: I’m passionate about all things data, and I'm excited to highlight some projects in the world of data science, machine learning, and AI on this site.
 permalink: /resume/
-image: '/images/Dan_Norway.jpg'
-image_caption: ''
+#image: '/images/Dan_Norway.jpg'
+#image_caption: ''
 ---
 
-With more than 9 years of experience as a data professional and a Masters in Computational Data Analytics from Georgia Tech, I've held a variety of individual contributor and management roles in several sectors including Finance, Advertising, and Insurance. I currently work as a Data Scientist at Liberty Mutual Insurance, supporting a portfolio of dozens of machine learning models to improve customer experiences and drive customer retention. I love diving headfirst into messy datasets and experimenting with the latest ML and AI techniques to find new ways to drive value. Aside from data science, I'm a lifelong musician, I love to hike, and I've recently taken up pickleball.
+<!-- <a class="social__link" href="" target="_blank" rel="noopener" aria-label="social icon"><i class="ion download"></i></a> -->
+<!-- <ion-icon name="download"></ion-icon> -->
+<h2><a href="{{site.baseurl}}/assets/Daniel_Schauder_Resume_2023-07-09.pdf" target="_blank"><i class="ion ion-md-cloud-download"></i> PDF</a></h2>
+<!-- <a href=""><i class="ion ion-logo-xing"></i></a> -->
 
-<div class="gallery-box">
+<!-- <div class="gallery-box">
   <div class="gallery">
-    <img src="/images/dan_mj_wedding.jpg" loading="lazy">
-    <img src="/images/Toby3.jpg" loading="lazy">
-    <img src="/images/dan_mj_toby_mountain.jpg" loading="lazy">
+    <img src="/images/resume_pg1.png" loading="lazy">
+    <img src="/images/resume_pg2.png" loading="lazy">
   </div>
-  <em>Me, my wife MJ, and our West Highland Terrier Toby</em>
-</div>
+</div> -->
+
+![Resume Page 1]({{site.baseurl}}/images/resume_pg1.png) ![Resume Page 2]({{site.baseurl}}/images/resume_pg2.png)
